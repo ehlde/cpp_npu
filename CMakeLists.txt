@@ -1,11 +1,12 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
-project(OpenCVExample)
+project(cpp_npu)
 
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(OpenCVExample main.cpp)
+include_directories(
+  ${OpenCV_INCLUDE_DIRS}
+)
 
-target_link_libraries(OpenCVExample ${OpenCV_LIBS})
-target_include_directories(OpenCVExample PRIVATE ${OpenCV_INCLUDE_DIRS})
+add_subdirectory(runner)
+add_subdirectory(gemm)
